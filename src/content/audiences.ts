@@ -131,7 +131,7 @@ export const AUDIENCES: readonly AudiencePageData[] = [
     lede: "Keiri automates the repetitive compliance and bookkeeping work across your client base, so your team spends its time on advice and review — and the firm grows without burning out.",
     metaTitle: "Keiri for CA firms",
     metaDescription:
-      "Automate GST and TDS reconciliation and filing across every client from one place, with a single calendar and dashboard so nothing slips through the cracks.",
+      "Automate GST and TDS reconciliation and filing across every client from one place, with one calendar and dashboard so nothing slips through.",
     painPoints: [
       "Compliance volume grows faster than the team can hire",
       "GST and TDS work is repetitive but unforgiving",

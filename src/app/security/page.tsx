@@ -16,7 +16,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Security & trust",
   description:
-    "Encryption in transit and at rest, role-based access with segregation of duties, a tamper-evident audit trail, and offline-capable tools for sensitive data.",
+    "Encryption in transit and at rest, role-based access with segregation of duties, a tamper-evident audit trail, and offline-capable tools.",
   path: "/security",
 });
 

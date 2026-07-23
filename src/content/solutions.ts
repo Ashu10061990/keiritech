@@ -166,7 +166,7 @@ export const SOLUTIONS: readonly SolutionPageData[] = [
     lede: "Keiri reconciles, accrues and consolidates while you watch the close progress in real time — and flags the variances that actually need your attention.",
     metaTitle: "The financial close, automated",
     metaDescription:
-      "Keiri reconciles banks and ledgers, posts recurring accruals, explains variances and consolidates entities — turning a week-long close into about three days.",
+      "Reconcile banks and ledgers, post recurring accruals, explain variances and consolidate entities — turning a week-long close into about three days.",
     problemHeading: "The close shouldn't eat the month",
     problemBody:
       "Spreadsheet-driven closes are slow and opaque: no one knows what's done, errors surface late, and the team burns evenings reconciling. Keiri standardizes the close and automates the repetitive parts.",
@@ -271,7 +271,7 @@ export const SOLUTIONS: readonly SolutionPageData[] = [
     lede: "Keiri rolls your actuals into living models, refreshes the forecast automatically, and answers 'what changed?' in plain language — so planning keeps pace with the business.",
     metaTitle: "FP&A and forecasting",
     metaDescription:
-      "Rolling 12-month forecasts that refresh from actuals automatically, direct cash-flow projection, and a board MIS pack assembled for review rather than built by hand.",
+      "Rolling 12-month forecasts that refresh from actuals automatically, direct cash-flow projection, and a board MIS pack assembled for review.",
     problemHeading: "Models go stale the day you finish them",
     problemBody:
       "Static spreadsheets are out of date as soon as the next actuals land, and rebuilding them swallows the analyst's week. Keiri keeps the model current and the story clear.",
@@ -372,7 +372,7 @@ export const SOLUTIONS: readonly SolutionPageData[] = [
     lede: "Keiri reconciles GST, computes TDS, tracks income-tax matters and watches the calendar — so deadlines stop being a monthly scramble.",
     metaTitle: "GST, TDS and tax compliance",
     metaDescription:
-      "GSTR-2B reconciliation, eligible ITC computation, GSTR-1 with full table coverage and GSTN-schema export, plus TDS, income-tax matters and a compliance calendar.",
+      "GSTR-2B reconciliation, eligible ITC computation, GSTR-1 with full table coverage and GSTN-schema export, plus TDS and a compliance calendar.",
     problemHeading: "Compliance is relentless — automate the routine",
     problemBody:
       "Returns, reconciliations and notices arrive on a clock that never stops. Keiri handles the repetitive computation and matching, keeping you ready to file and surfacing only what needs judgment.",
@@ -474,7 +474,7 @@ export const SOLUTIONS: readonly SolutionPageData[] = [
     lede: "Keiri logs every action, enforces segregation of duties, and tests controls as work happens — so the evidence auditors want is built as you go.",
     metaTitle: "Audit trails and controls",
     metaDescription:
-      "A tamper-evident audit trail on every action, enforced segregation of duties, and continuous control testing — so audits become a review, not a document hunt.",
+      "A tamper-evident audit trail on every action, enforced segregation of duties and continuous control testing — so audits become a review, not a hunt.",
     problemHeading: "Controls shouldn't be a once-a-year panic",
     problemBody:
       "When controls live in people's heads and evidence is gathered at year-end, audits are stressful and risky. Keiri makes controls part of the daily workflow and keeps the evidence ready.",

@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     template: "%s | Keiri Tech",
   },
   description:
-    "Keiri Tech builds AI that automates the financial back office — payables & receivables, the close, FP&A and tax compliance — for finance teams that want their hours back.",
+    "AI that automates the financial back office — payables and receivables, the close, FP&A and tax compliance — for finance teams that want their hours back.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",

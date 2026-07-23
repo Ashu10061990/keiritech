@@ -14,7 +14,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Company",
   description:
-    "Keiri Tech grew out of a working chartered-accountancy practice. We built the tools we wished we had, then realized every finance team in India needed them.",
+    "Keiri Tech grew out of a working chartered-accountancy practice. We built the tools we wished we had — then every finance team in India needed them.",
   path: "/about",
 });
 
