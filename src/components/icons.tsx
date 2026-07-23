@@ -256,6 +256,48 @@ export function SendIcon(props: IconProps) {
   );
 }
 
+/** Clock — "a faster, predictable close" (for-cfos). */
+export function ClockIcon(props: IconProps) {
+  return (
+    <svg {...outline} aria-hidden="true" {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2" />
+    </svg>
+  );
+}
+
+/** Workflow nodes — "one controlled workflow" (for-controllers). */
+export function WorkflowIcon(props: IconProps) {
+  return (
+    <svg {...outline} aria-hidden="true" {...props}>
+      <circle cx="5" cy="6" r="2" />
+      <circle cx="19" cy="6" r="2" />
+      <circle cx="12" cy="18" r="2" />
+      <path d="M5 8v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8M12 14v-2" />
+    </svg>
+  );
+}
+
+/** People — "same team, more clients" (for-ca-firms). */
+export function UsersIcon(props: IconProps) {
+  return (
+    <svg {...outline} aria-hidden="true" {...props}>
+      <circle cx="9" cy="8" r="3" />
+      <path d="M3 20a6 6 0 0 1 12 0M16 6a3 3 0 0 1 0 6M22 20a6 6 0 0 0-4-5.6" />
+    </svg>
+  );
+}
+
+/** Eye — "central oversight" (for-ca-firms). */
+export function EyeIcon(props: IconProps) {
+  return (
+    <svg {...outline} aria-hidden="true" {...props}>
+      <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  );
+}
+
 /**
  * Registry, so the nav manifest can name an icon as data rather than importing
  * a component into a data file.
@@ -276,6 +318,10 @@ export const ICONS = {
   building: BuildingIcon,
   doc: DocIcon,
   spark: SparkIcon,
+  clock: ClockIcon,
+  workflow: WorkflowIcon,
+  users: UsersIcon,
+  eye: EyeIcon,
 } as const;
 
 export type IconName = keyof typeof ICONS;

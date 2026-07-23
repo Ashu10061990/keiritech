@@ -1658,3 +1658,20 @@ footer.site p.tag {
     min-height: 340px;
   }
 }
+
+/* Roadmap badge — solution and Keiri AI pages. Ported from the inline style
+   in the legacy heroes. See the note in SolutionPage.tsx: this is the only
+   signal that a capability is not yet shipped. */
+.roadmap-badge {
+  display: inline-block;
+  background: rgba(233, 162, 59, 0.15);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
