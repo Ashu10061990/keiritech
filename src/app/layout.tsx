@@ -52,6 +52,12 @@ export const metadata: Metadata = {
   },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
+  // Geo targeting (spec D16). These go through the Metadata API rather than a
+  // hand-written <head>; see the note on the layout below.
+  other: {
+    "geo.region": "IN",
+    "geo.placename": "Greater Noida, India",
+  },
 };
 
 export default function RootLayout({
@@ -62,13 +68,23 @@ export default function RootLayout({
       lang="en-IN"
       className={`${fraunces.variable} ${jakarta.variable} ${plexMono.variable}`}
     >
-      <head>
-        {/* Geo targeting — spec D16. India-first audience. */}
-        <meta name="geo.region" content="IN" />
-        <meta name="geo.placename" content="Greater Noida, India" />
+      {/*
+        ⚠️ No hand-written <head> element here.
+
+        A manual <head> in an App Router root layout produces malformed HTML:
+        the browser hoists the head content into <body>, hydration fails, and
+        every interactive element on the site goes dead — while every route
+        still returns 200 and the markup still looks right in a screenshot.
+        That is exactly what happened, and only clicking the chat button caught
+        it.
+
+        Metadata goes through the `metadata` export; JSON-LD renders in the
+        body, which is the documented Next pattern and works fine for crawlers.
+      */}
+      <body>
+        {/* Static, developer-authored JSON-LD — no user input reaches this. */}
         <script
           type="application/ld+json"
-          // Static, developer-authored JSON-LD — no user input reaches this.
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationJsonLd()),
           }}
@@ -79,8 +95,6 @@ export default function RootLayout({
             __html: JSON.stringify(webSiteJsonLd()),
           }}
         />
-      </head>
-      <body>
         <ChatProvider>
           <Header />
           <main id="main">{children}</main>

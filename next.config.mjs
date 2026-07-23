@@ -5,6 +5,8 @@
  * Security headers and cache tiers carry over the legacy `firebase.json`
  * behaviour (KEIRITECH-INVENTORY.md §9). Task 11 completes this.
  */
+const isDev = process.env.NODE_ENV !== "production";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // A production build and a running `next dev` cannot share one output
@@ -35,7 +37,15 @@ const nextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline'",
+              // 'unsafe-eval' is DEVELOPMENT ONLY. Next's dev/HMR runtime
+              // evaluates code at runtime; without it every client bundle is
+              // blocked, React never hydrates, and the whole site renders as
+              // dead markup — routes still 200 and screenshots still look
+              // right, which is exactly how this shipped past every gate.
+              // Production builds do not need it.
+              isDev
+                ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+                : "script-src 'self' 'unsafe-inline'",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: blob:",
               "font-src 'self' data:",
