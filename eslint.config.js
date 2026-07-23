@@ -9,6 +9,9 @@ export default tseslint.config(
     ignores: [
       "**/node_modules/**",
       "**/.next/**",
+      // Build output. Created by the NEXT_DIST_DIR override in next.config.mjs;
+      // without this eslint lints ~10k generated files.
+      "**/.next-build/**",
       "**/out/**",
       "**/coverage/**",
       "**/next-env.d.ts",
@@ -57,8 +60,18 @@ export default tseslint.config(
   },
 
   // Config files are plain JS/TS run by tooling, not part of the app graph.
+  // They run in Node, so `process` and friends must be declared — otherwise
+  // `no-undef` (from js.configs.recommended) fires on them.
   {
     files: ["*.config.{js,mjs,ts}", "eslint.config.js", "vitest.setup.ts"],
+    languageOptions: {
+      globals: {
+        process: "readonly",
+        __dirname: "readonly",
+        module: "writable",
+        require: "readonly",
+      },
+    },
     rules: {
       "no-restricted-syntax": "off",
     },
