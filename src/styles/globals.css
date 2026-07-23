@@ -1562,3 +1562,99 @@ footer.site p.tag {
     transition: none;
   }
 }
+
+/* ==========================================================================
+   Home hero.
+   The legacy markup did this with inline styles on a two-column grid and
+   absolutely-positioned mock panels. Moved into CSS so it can respond — the
+   inline version overflowed hard below 860px.
+   ========================================================================== */
+.home-hero {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 30px;
+  align-items: center;
+}
+.home-art {
+  position: relative;
+  min-height: 560px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.home-art-glow {
+  position: absolute;
+  width: 430px;
+  height: 430px;
+  border-radius: 50%;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(233, 162, 59, 0.16), transparent 65%);
+}
+.home-art-img {
+  position: relative;
+  z-index: 2;
+  height: 560px;
+  width: auto;
+  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.45));
+}
+.home-mock-a {
+  position: absolute;
+  z-index: 3;
+  top: 50px;
+  left: -6px;
+  width: 225px;
+  padding: 14px 16px;
+}
+.home-mock-b {
+  position: absolute;
+  z-index: 3;
+  bottom: 70px;
+  right: -10px;
+  width: 205px;
+  padding: 14px 16px;
+}
+
+@media (max-width: 860px) {
+  .home-hero {
+    grid-template-columns: 1fr;
+  }
+  .home-art {
+    min-height: 420px;
+    margin-top: 32px;
+  }
+  .home-art-img {
+    height: 400px;
+  }
+  .home-art-glow {
+    width: 320px;
+    height: 320px;
+  }
+  /* The mock panels overlap the artwork at desktop width. On a phone there is
+     no room for that, so they sit inside the column edges instead of hanging
+     off them — which is what caused the sideways scroll. */
+  .home-mock-a {
+    top: 10px;
+    left: 0;
+    width: 190px;
+  }
+  .home-mock-b {
+    bottom: 10px;
+    right: 0;
+    width: 175px;
+  }
+}
+
+@media (max-width: 420px) {
+  .home-mock-a,
+  .home-mock-b {
+    display: none;
+  }
+  .home-art-img {
+    height: 320px;
+  }
+  .home-art {
+    min-height: 340px;
+  }
+}
