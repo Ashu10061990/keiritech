@@ -54,12 +54,32 @@ and there is no way to review what the bot collected. Deliberate for MVP.
 
 ---
 
+## Found during the full build — do not reintroduce
+
+**`next build --distDir` is not a valid Next 15 flag.** Added to stop a build
+corrupting a live `next dev` (they cannot share `.next`), it silently failed
+every build until caught. Now `distDir` in `next.config.mjs` behind
+`NEXT_DIST_DIR`. The lesson repeats the BYA repo's: a gate that cannot fail is
+worse than no gate.
+
+**`inert=""` is falsy in React 19.** The string form leaves a hidden panel
+focusable. Use a real boolean.
+
+**Synchronous `setState` inside an effect** cascades a render; `react-hooks`
+flags it. Defer with `requestAnimationFrame`, or use a ref when the value is
+never rendered.
+
+---
+
 ## Needs a decision from the user
 
 - **GA4 measurement ID.** The legacy site shipped the `G-XXXXXXXXXX` placeholder,
   so nothing has ever been collected. Analytics cannot be wired without a real ID.
-- **Office addresses and coordinates** for the `LocalBusiness` / geo markup in
-  Task 10. The inventory records the email and phone, not a postal address.
+- **Office address and coordinates** for the geo markup. `ProfessionalService`
+  currently publishes the city (Greater Noida) and `areaServed`, but omits
+  `geo` — a guessed lat/long is worse than none, and `seo.test.ts` asserts its
+  absence so it cannot be added carelessly. Supply the address and the test
+  expectation changes with it.
 - **Resend sending domain** — `CONTACT_FROM_EMAIL` defaults to
   `website@keiritech.com`, which needs the domain verified in Resend before any
   mail actually leaves.
