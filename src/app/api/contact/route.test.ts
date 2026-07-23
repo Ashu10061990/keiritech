@@ -134,3 +134,47 @@ describe("POST /api/contact", () => {
     expect(sendMailMock).not.toHaveBeenCalled();
   });
 });
+
+describe("POST /api/contact — no-JS form post", () => {
+  async function formPost(fields: Record<string, string>) {
+    const { POST } = await import("./route");
+    return POST(
+      new Request("http://localhost/api/contact", {
+        method: "POST",
+        headers: {
+          "content-type": "application/x-www-form-urlencoded",
+          "x-forwarded-for": "203.0.113.55",
+        },
+        body: new URLSearchParams(fields).toString(),
+      }),
+    );
+  }
+
+  it("accepts url-encoded data and sends the mail", async () => {
+    const res = await formPost(valid);
+    expect(sendMailMock).toHaveBeenCalledTimes(1);
+    expect(res.status).toBe(303);
+    expect(res.headers.get("location")).toBe("/contact?state=sent");
+  });
+
+  it("redirects rather than returning JSON on a validation failure", async () => {
+    const res = await formPost({ ...valid, email: "nope" });
+    expect(res.status).toBe(303);
+    expect(res.headers.get("location")).toBe("/contact?state=invalid");
+    expect(sendMailMock).not.toHaveBeenCalled();
+  });
+
+  it("redirects with a failure state when the transport fails", async () => {
+    sendMailMock.mockRejectedValueOnce(new Error("resend down"));
+    const res = await formPost(valid);
+    expect(res.status).toBe(303);
+    expect(res.headers.get("location")).toBe("/contact?state=failed");
+  });
+
+  it("gives a bot the same redirect as a success", async () => {
+    const res = await formPost({ ...valid, company_website: "http://spam" });
+    expect(res.status).toBe(303);
+    expect(res.headers.get("location")).toBe("/contact?state=sent");
+    expect(sendMailMock).not.toHaveBeenCalled();
+  });
+});

@@ -170,6 +170,5 @@ export const KEYWORD_GROUPS: readonly KeywordGroup[] = [
   },
 ] as const;
 
-/** Contact details, ported from KEIRITECH-INVENTORY.md §6. */
-export const CONTACT_EMAIL = "business@keiritech.com";
-export const CONTACT_PHONE = "+91 8954841762";
+/** Re-exported so prompt-building has one import. Source: `@/lib/contact`. */
+export { CONTACT_EMAIL, CONTACT_PHONE } from "@/lib/contact";
