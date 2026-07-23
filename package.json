@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build --distDir .next-build",
+    "build": "NEXT_DIST_DIR=.next-build next build",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
@@ -18,7 +18,9 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.68.0",
+    "gray-matter": "^4.0.3",
     "next": "^15.5.4",
+    "next-mdx-remote": "^6.0.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "resend": "^4.8.0",

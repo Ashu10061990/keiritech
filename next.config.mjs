@@ -7,6 +7,11 @@
  */
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // A production build and a running `next dev` cannot share one output
+  // directory — the build replaces files the dev server holds open, and every
+  // route then 500s with a missing routes-manifest. CI and local builds set
+  // NEXT_DIST_DIR so `pnpm build` never disturbs a live dev server.
+  distDir: process.env.NEXT_DIST_DIR ?? ".next",
   reactStrictMode: true,
   poweredByHeader: false,
   async headers() {

@@ -43,8 +43,11 @@ export function Section({
   small,
   children,
 }: {
-  variant?: "alt" | "dark";
-  small?: boolean;
+  // `| undefined` is explicit because `exactOptionalPropertyTypes` is on:
+  // callers that pass a computed `variant` (integrations maps over a list where
+  // one entry has none) would otherwise fail to typecheck.
+  variant?: "alt" | "dark" | undefined;
+  small?: boolean | undefined;
   children: React.ReactNode;
 }) {
   const className = ["sec", small ? "sec-sm" : "", variant ?? ""]
