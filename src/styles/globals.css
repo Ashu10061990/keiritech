@@ -1675,3 +1675,72 @@ footer.site p.tag {
   border-radius: 999px;
   margin-bottom: 16px;
 }
+
+/* "Live product" badge and the BookYourAccountant feature card on /solutions.
+   Ported from inline styles. Counterpart to .roadmap-badge: together the two
+   tell a visitor what ships today and what does not. */
+.live-badge {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy-deep);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+.bya-card {
+  display: block;
+  border: 1px solid var(--gold);
+  background: linear-gradient(135deg, var(--paper-card), var(--paper-dim));
+  margin-bottom: 28px;
+}
+
+/* Cards on a dark section (keiri-ai "In your control"). Ported from the inline
+   overrides the legacy page repeated on each card. */
+.card-on-dark {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(233, 162, 59, 0.3);
+}
+.card-on-dark .ic,
+.card-on-dark h3 {
+  color: var(--gold-soft);
+}
+.card-on-dark p {
+  color: rgba(246, 243, 236, 0.74);
+}
+
+/* Keiri portrait — keiri-ai page. */
+.keiri-portrait {
+  position: relative;
+  text-align: center;
+}
+.keiri-portrait-glow {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(233, 162, 59, 0.12), transparent 65%);
+  max-width: 100%;
+}
+.keiri-portrait-img {
+  position: relative;
+  height: 440px;
+  width: auto;
+  margin: 0 auto;
+  filter: drop-shadow(0 24px 36px rgba(20, 39, 25, 0.25));
+}
+@media (max-width: 860px) {
+  .keiri-portrait-img {
+    height: 340px;
+  }
+  .keiri-portrait-glow {
+    width: 280px;
+    height: 280px;
+  }
+}

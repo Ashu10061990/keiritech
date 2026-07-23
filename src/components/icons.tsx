@@ -298,6 +298,16 @@ export function EyeIcon(props: IconProps) {
   );
 }
 
+/** Padlock — "Gated" (keiri-ai). */
+export function LockIcon(props: IconProps) {
+  return (
+    <svg {...outline} aria-hidden="true" {...props}>
+      <rect x="5" y="11" width="14" height="9" rx="2" />
+      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+    </svg>
+  );
+}
+
 /**
  * Registry, so the nav manifest can name an icon as data rather than importing
  * a component into a data file.
@@ -322,6 +332,7 @@ export const ICONS = {
   workflow: WorkflowIcon,
   users: UsersIcon,
   eye: EyeIcon,
+  lock: LockIcon,
 } as const;
 
 export type IconName = keyof typeof ICONS;
